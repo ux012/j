@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한빛고 2학년 3반 · 기밀 파일</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0d1315; --ink-2:#111a1c; --surface:#131e20; --card:#182427;
+    --line:#2a3a3d; --bone:#ece5d6; --bone-dim:#b9b4a6; --grey:#7c8a8c;
+    --red:#c8402c; --red-deep:#9a2e1f; --brass:#bd9d5f;
+    --serif:'Nanum Myeongjo',serif; --sans:'Pretendard',sans-serif; --mono:'Spline Sans Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--ink);color:var(--bone);font-family:var(--sans);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:900;
+    background:radial-gradient(ellipse 120% 80% at 50% 0%,transparent 40%,rgba(0,0,0,.55) 100%),
+    repeating-linear-gradient(0deg,rgba(255,255,255,.014) 0 1px,transparent 1px 3px);mix-blend-mode:overlay}
+  ::selection{background:var(--red);color:var(--bone)}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--red);font-weight:500}
+  .eyebrow.brass{color:var(--brass)} .eyebrow.grey{color:var(--grey)}
+
+  .classbar{position:sticky;top:0;z-index:800;display:flex;justify-content:space-between;align-items:center;gap:16px;
+    padding:9px 28px;background:linear-gradient(90deg,var(--red-deep),var(--red));
+    font-family:var(--mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#f4e9dc;border-bottom:1px solid rgba(0,0,0,.3)}
+  .classbar .r{opacity:.85;letter-spacing:.14em} .classbar b{font-weight:600}
+
+  /* HERO */
+  .hero{position:relative;padding:80px 0 66px;border-bottom:1px solid var(--line);overflow:hidden}
+  .hero::after{content:"";position:absolute;right:-120px;top:40px;width:520px;height:520px;
+    border:1px solid rgba(189,157,95,.14);border-radius:50%;box-shadow:0 0 0 40px rgba(189,157,95,.04) inset;pointer-events:none}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:22px 40px;margin-bottom:40px;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--grey)}
+  .hero-meta .k{color:var(--red);letter-spacing:.2em;font-size:10px;text-transform:uppercase;display:block;margin-bottom:5px}
+  .hero-meta .v{color:var(--bone);font-size:13px}
+  .stamp{display:inline-block;margin-bottom:26px;padding:6px 15px;border:1.5px solid var(--red);color:var(--red);border-radius:3px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;font-weight:600;transform:rotate(-2.5deg)}
+  .hero h1{font-family:var(--serif);font-weight:800;font-size:clamp(46px,9vw,102px);line-height:1;letter-spacing:-.01em;color:var(--bone);margin-bottom:14px}
+  .hero h1 .re{color:var(--red)}
+  .hero .sub{font-family:var(--serif);font-size:clamp(18px,2.5vw,25px);color:var(--bone-dim);font-style:italic;margin-bottom:30px}
+  .hero .lede{max-width:600px;color:var(--bone-dim);font-size:15.5px;position:relative;z-index:2}
+  .hero .lede b{color:var(--bone);font-weight:600}
+
+  section{padding:78px 0}
+  .sec-head{margin-bottom:44px;border-bottom:1px solid var(--line);padding-bottom:20px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .sec-head h2{font-family:var(--serif);font-weight:700;font-size:clamp(28px,4.4vw,44px);line-height:1.05}
+  .sec-head .num{font-family:var(--mono);font-size:12px;color:var(--brass);letter-spacing:.2em}
+
+  /* BACKGROUND */
+  .bg-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .bg-cell{background:var(--surface);padding:34px 32px}
+  .bg-cell .eyebrow{margin-bottom:16px;display:block}
+  .bg-cell h3{font-family:var(--serif);font-size:22px;margin-bottom:12px;color:var(--bone)}
+  .bg-cell p{color:var(--bone-dim);font-size:14.5px} .bg-cell p+p{margin-top:10px}
+  .bg-cell .tags{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--bone-dim);border:1px solid var(--line);padding:4px 10px;border-radius:2px}
+  .chip.hot{color:var(--red);border-color:var(--red-deep)}
+
+  /* CHARACTER DOSSIER ROWS */
+  .file-note{font-family:var(--mono);font-size:12px;color:var(--grey);margin-bottom:30px;letter-spacing:.02em;line-height:1.9}
+  .file-note b{color:var(--red)}
+  .group-lab{display:block;margin:0 0 22px}
+  .group-lab.mt{margin-top:52px}
+
+  .dossier{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);gap:0;
+    background:var(--card);border:1px solid var(--line);border-radius:5px;overflow:hidden;margin-bottom:24px;align-items:stretch}
+  .photo-col{background:var(--ink-2);border-right:1px solid var(--line);display:flex;flex-direction:column}
+  .photo{position:relative;aspect-ratio:2000/1368;width:100%}
+  .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2}
+  .photo-ph{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+    background:radial-gradient(circle at 50% 42%,rgba(189,157,95,.07),transparent 68%)}
+  .photo-ph .pav{width:76px;height:76px;border:1px solid var(--brass);border-radius:4px;display:grid;place-items:center;
+    font-family:var(--serif);font-size:34px;font-weight:800;color:var(--brass)}
+  .photo-ph .pdim{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--grey);text-align:center;line-height:1.8}
+  .photo-cap{flex:1;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 16px;
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--grey);border-top:1px solid var(--line);min-height:44px}
+  .photo-cap .rj{color:var(--bone-dim);text-transform:uppercase}
+
+  .info-col{padding:30px 30px 28px;display:flex;flex-direction:column}
+  .info-col .fno{font-family:var(--mono);font-size:11px;color:var(--grey);letter-spacing:.14em;margin-bottom:12px}
+  .info-col .fno .st{color:var(--red);border:1px solid var(--red-deep);border-radius:2px;padding:2px 7px;margin-left:8px;font-size:9px;letter-spacing:.2em;text-transform:uppercase}
+  .info-col h3{font-family:var(--serif);font-size:30px;font-weight:800;line-height:1;color:var(--bone)}
+  .info-col .role{font-family:var(--mono);font-size:12px;color:var(--red);letter-spacing:.03em;margin-top:8px}
+  .info-col .phys{font-family:var(--mono);font-size:10.5px;color:var(--grey);margin-top:12px;letter-spacing:.02em}
+  .info-col .tagline{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--bone-dim);margin:16px 0 4px;padding-left:13px;border-left:2px solid var(--red)}
+  .trait{margin-top:14px}
+  .trait .lab{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);display:block;margin-bottom:3px}
+  .trait p{font-size:14px;color:var(--bone-dim)}
+  .declass{margin-top:20px;border-top:1px dashed var(--line);padding-top:16px}
+  .declass-btn{width:100%;background:transparent;border:1px solid var(--red-deep);color:var(--red);
+    font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:10px;border-radius:3px;cursor:pointer;transition:background .2s,color .2s}
+  .declass-btn:hover,.declass-btn:focus-visible{background:var(--red);color:#f4e9dc;outline:none}
+  .secret{max-height:0;overflow:hidden;opacity:0;transition:max-height .5s ease,opacity .4s ease,margin .4s ease}
+  .dossier.open .secret{max-height:900px;opacity:1;margin-top:16px}
+  .dossier.open .declass-btn{opacity:.45}
+  .secret .lab{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:5px}
+  .secret p{font-size:13.5px;color:var(--bone-dim);margin-bottom:16px}
+  .secret .kink{font-family:var(--mono);font-size:11.5px;color:var(--bone);letter-spacing:.02em;line-height:1.7;
+    background:rgba(200,64,44,.09);border:1px solid var(--red-deep);border-radius:3px;padding:10px 12px}
+
+  /* ELDERS */
+  .elders{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px}
+  .elder{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:26px;display:flex;gap:18px;align-items:flex-start}
+  .elder .eav{flex:none;width:52px;height:52px;border:1px solid var(--grey);border-radius:3px;display:grid;place-items:center;font-family:var(--serif);font-size:22px;font-weight:800;color:var(--grey)}
+  .elder h3{font-family:var(--serif);font-size:21px;color:var(--bone);font-weight:700}
+  .elder .role{font-family:var(--mono);font-size:11px;color:var(--grey);margin:4px 0 10px;letter-spacing:.03em}
+  .elder p{font-size:13.5px;color:var(--bone-dim)}
+
+  /* SETUP ROUTES */
+  .setup{background:var(--ink-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .routes{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .route{background:var(--surface);border:1px solid var(--line);border-radius:5px;padding:38px 34px;position:relative;transition:border-color .3s,transform .3s}
+  .route:hover{border-color:var(--brass);transform:translateY(-4px)}
+  .route .tag{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:18px}
+  .route h3{font-family:var(--serif);font-size:30px;font-weight:800;color:var(--bone);margin-bottom:6px}
+  .route .kr{font-family:var(--mono);font-size:12px;color:var(--brass);letter-spacing:.1em;margin-bottom:18px}
+  .route p{color:var(--bone-dim);font-size:15px}
+  .route .warn{margin-top:16px;font-family:var(--mono);font-size:11px;color:var(--grey);letter-spacing:.02em;border-top:1px solid var(--line);padding-top:14px}
+  .route .big-no{position:absolute;top:26px;right:30px;font-family:var(--serif);font-size:56px;font-weight:800;color:var(--line);line-height:1}
+
+  footer{padding:62px 0 72px;text-align:center;border-top:1px solid var(--line)}
+  footer .m{font-family:var(--mono);font-size:11px;color:var(--grey);letter-spacing:.14em;margin-bottom:12px}
+  footer .big{font-family:var(--serif);font-size:26px;color:var(--bone-dim);font-style:italic;margin-bottom:18px}
+  footer .sys{font-family:var(--mono);font-size:10.5px;color:var(--line);letter-spacing:.06em;line-height:1.9}
+  footer .sys b{color:var(--grey)}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:840px){
+    .bg-grid{grid-template-columns:1fr}
+    .dossier{grid-template-columns:1fr}
+    .photo-col{border-right:none;border-bottom:1px solid var(--line)}
+    .dossier.flip .photo-col{order:-1}
+    .elders{grid-template-columns:1fr}
+    .routes{grid-template-columns:1fr}
+    .hero::after{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto!important}
+    .reveal{opacity:1;transform:none;transition:none}
+    .route:hover,.dossier:hover{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="classbar">
+  <span><b>기밀 · CONFIDENTIAL</b> — 열람 등급 19</span>
+  <span class="r">파일 no. HB-2026 / 대외비</span>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <span class="stamp">특종 파일 · 열람</span>
+    <div class="hero-meta">
+      <div><span class="k">사건명</span><span class="v">한빛고 2학년 3반 동창회</span></div>
+      <div><span class="k">시점</span><span class="v">2026 · 재회</span></div>
+      <div><span class="k">최초 관측지</span><span class="v">경기 의정부</span></div>
+      <div><span class="k">등장 인물</span><span class="v">09명</span></div>
+    </div>
+    <h1>20년 후,<br>그들이 <span class="re">돌아왔다</span></h1>
+    <p class="sub">그 시절 아이들이, 각자의 정점에서 다시 한자리에 모였다</p>
+    <p class="lede">
+      의정부의 한 사립고, 2학년 3반. 옥상에서 컵라면을 나눠 먹던 아이들은 각자
+      <b>지휘자·검사·CEO·해커·스타</b>가 되어 20년 만에 다시 모였다.
+      화려한 명함 뒤에 저마다 숨겨둔 결핍과 옛 감정이, 재회의 밤 조금씩 흘러나오기 시작한다.
+      그리고 이 자리에 당신이 있다 — <b>평범한 동창으로서</b>, 혹은 <b>이들을 쫓는 파파라치로서</b>.
+    </p>
+  </div>
+</header>
+
+<!-- BACKGROUND -->
+<section id="bg">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>사건 배경</h2>
+      <span class="num">FILE 01 / 세계관</span>
+    </div>
+    <div class="bg-grid reveal">
+      <div class="bg-cell">
+        <span class="eyebrow brass">그때 · 한빛고</span>
+        <h3>옥상, 제2음악실, 실내수영장</h3>
+        <p>최용건 재단 소속 남녀공학. 도진이 열쇠를 쥐던 옥상, 은호가 홀로 건반을 두드리던 제2음악실, 재준의 실내수영장이 이들의 성지였다.</p>
+        <p>화이트데이와 봄소풍, 한빛제와 야자, 콩쿠르와 전국체전 — 담임 박동철의 따뜻한 그늘 아래, 이사장 최용건의 실적표 위에서 함께 자랐다.</p>
+        <div class="tags"><span class="chip">2학년 3반</span><span class="chip">이모네 분식</span><span class="chip">방과후 후문골목</span></div>
+      </div>
+      <div class="bg-cell">
+        <span class="eyebrow">지금 · 2026</span>
+        <h3>각자의 정점에서, 다시 한자리에</h3>
+        <p>20년이 흘러 이들은 연봉 수십억의 어른이 됐다. 그러나 재회의 순간, 성공의 갑옷 아래 감춰둔 결핍과 옛 감정이 하나둘 드러나기 시작한다.</p>
+        <p>천재도, 왕따도, 금쪽이도 — 각자의 세계에서 정점에 선 채로 그날, 다시 얽힌다.</p>
+        <div class="tags"><span class="chip hot">성인 · 19금 서사</span><span class="chip">달콤살벌 재회물</span><span class="chip">멀티 공략</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHARACTERS -->
+<section id="cast" style="background:var(--ink-2);border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>인물 파일</h2>
+      <span class="num">FILE 02 / 등장 인물</span>
+    </div>
+    <p class="file-note reveal">각 인물의 <b>기밀 해제</b> 버튼을 누르면 포착된 연애사·성향 파일이 열람됩니다. 열람 등급 19.<br></p>
+
+    <!-- 주연 3인방 -->
+    <span class="eyebrow brass group-lab reveal">주연 · 옥상 컵라면 찐친 3인방</span>
+
+    <!-- 01 유은호 -->
+    <article class="dossier reveal">
+      <div class="photo-col">
+        <div class="photo">
+          <img src="https://raw.githubusercontent.com/ux012/t/refs/heads/main/eunho.jpg" alt="유은호" onerror="this.style.display='none'">
+          <div class="photo-ph"><span class="pav">恩</span><span class="pdim">이미지 2000×1368<br>images/eunho.jpg</span></div>
+        </div>
+        <div class="photo-cap"><span>PHOTO no.01</span><span class="rj">Eunho Yoo</span></div>
+      </div>
+      <div class="info-col">
+        <div class="fno">no. 01<span class="st">포착됨</span></div>
+        <h3>유은호</h3>
+        <div class="role">월드클래스 마에스트로</div>
+        <div class="phys">182 · 72 / 백금발 · 연하늘색 눈 / 소프트돔</div>
+        <div class="tagline">다정한 왕자님의, 계산된 가면</div>
+        <div class="trait"><span class="lab">겉</span><p>여유롭고 만인에게 젠틀하게 웃어주지만, 그 미소는 철저히 계산된 어른의 가면이다. 타인이 선을 넘는 순간 얼음처럼 차가워진다.</p></div>
+        <div class="trait"><span class="lab">속</span><p>고교 시절 자신을 옭아매던 모친의 학대와 폐소공포증은 오랜 약물치료로 회복했다. 그러나 '완벽하지 않으면 버림받는다'는 애정결핍은 여전해, 내면을 들키면 상대가 떠날까 봐 완벽한 어른을 연기하며 거리를 둔다.</p></div>
+        <div class="trait"><span class="lab">서사</span><p>고교 시절 국제 콩쿠르 우승 직후 유학길에 오르며 모친과 완벽히 절연했다. 뛰어난 사교성과 예술성으로 세계 최고 오케스트라의 최연소 상임지휘자 자리까지 올랐다.</p></div>
+        <div class="declass">
+          <button class="declass-btn" aria-expanded="false">▸ 기밀 해제</button>
+          <div class="secret">
+            <span class="lab">연애사</span><p>총 3번. 유럽 유학 시절의 현지 오케스트라 수석 바이올리니스트, 프랑스 재벌 2세 후원자까지 — 모두 그의 기품과 다정함에 반해 열렬히 구애했으나, 은호는 끝내 자신의 과거(암실 감금 등)를 나누지 않고 적당한 거리를 지켰다. 31세에 유럽 예술재단 가문과 정략결혼했지만, 배우자가 그의 명성과 결혼생활을 사업 홍보에 이용하고 사적인 치료 기록마저 언론플레이 수단으로 삼으려 하자 관계가 파탄 났다. 현재 1년째 별거 중.</p>
+            <div class="kink">소프트돔 / 감각지배 · 거울 관전 · 애원할 때까지 티징</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 02 서재준 -->
+    <article class="dossier flip reveal">
+      <div class="photo-col">
+        <div class="photo">
+          <img src="https://raw.githubusercontent.com/ux012/t/refs/heads/main/jaejun.jpg" alt="서재준" onerror="this.style.display='none'">
+          <div class="photo-ph"><span class="pav">俊</span><span class="pdim">이미지 2000×1368<br>images/jaejun.jpg</span></div>
+        </div>
+        <div class="photo-cap"><span>PHOTO no.02</span><span class="rj">Jaejun Seo</span></div>
+      </div>
+      <div class="info-col">
+        <div class="fno">no. 02<span class="st">포착됨</span></div>
+        <h3>서재준</h3>
+        <div class="role">대형 스포츠 에이전시 대표</div>
+        <div class="phys">189 · 86 / 태닝 · 흉터 눈썹 / 짐승돔</div>
+        <div class="tagline">밑바닥에서 업계 1위로</div>
+        <div class="trait"><span class="lab">겉</span><p>자수성가 CEO 특유의 거침없는 자신감과 배포. 쾌남 기질이 여전해 찐친 앞에선 필터 없는 욕설을 뱉고 호탕하게 웃는다. 내 사람이다 싶으면 무식할 정도로 다 퍼준다.</p></div>
+        <div class="trait"><span class="lab">속</span><p>부유해졌어도 깊은 곳엔 조손가정 꼬맹이라는 열등감이 남아 있다. 물질을 못 주면 버림받을 거란 강박에 늘 밥값을 계산하고 비싼 선물을 안기며 안도한다.</p></div>
+        <div class="trait"><span class="lab">서사</span><p>올림픽 3연속 금메달 후 어깨 부상이 오자 미련 없이 은퇴, 뛰어난 배짱으로 세운 스포츠 에이전시를 업계 1위로 키워냈다. 할머니의 빚을 털고 최고급 요양병원에 모신 것이 그의 자부심.</p></div>
+        <div class="declass">
+          <button class="declass-btn" aria-expanded="false">▸ 기밀 해제</button>
+          <div class="secret">
+            <span class="lab">연애사</span><p>첫 금메달 직후 광고 촬영장에서 만난 최정상 여배우와 2년간 비밀연애 끝에, 대중의 축복 속에 결혼했다. 그러나 서로 바쁜 일정에 멀어지던 중 배우자와 상대 남배우의 해외 밀회 사진이 터졌다. 배우자는 오히려 재준의 사생활 통제와 폭언을 주장하며 언론전에 나섰다. 결혼 5년 만에 이혼소송 중 — 재산분할, 광고 위약금, 공동명의 펜트하우스, 폭로금지 조항을 두고 치열하게 대립하고 있다.</p>
+            <div class="kink">짐승돔 / 스태미나 · 체격차 압박 · 절정에 브리딩 집착</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 03 백도진 -->
+    <article class="dossier reveal">
+      <div class="photo-col">
+        <div class="photo">
+          <img src="https://raw.githubusercontent.com/ux012/t/refs/heads/main/dojin.jpg" alt="백도진" onerror="this.style.display='none'">
+          <div class="photo-ph"><span class="pav">鎭</span><span class="pdim">이미지 2000×1368<br>images/dojin.jpg</span></div>
+        </div>
+        <div class="photo-cap"><span>PHOTO no.03</span><span class="rj">Dojin Baek</span></div>
+      </div>
+      <div class="info-col">
+        <div class="fno">no. 03<span class="st">포착됨</span></div>
+        <h3>백도진</h3>
+        <div class="role">서울중앙지검 부장검사</div>
+        <div class="phys">185 · 75 / 포마드 흑발 · 은테 안경 / 대디돔</div>
+        <div class="tagline">정재계가 두려워하는 독종 칼잡이</div>
+        <div class="trait"><span class="lab">겉</span><p>논리로 뼈를 때리는 이성주의자이자 완벽주의 워커홀릭. 그러나 제 바운더리 안의 사람에겐 "밥은 먹었냐, 영양제 챙겨라" 잔소리를 퍼붓는 벤츠급 과보호다.</p></div>
+        <div class="trait"><span class="lab">속</span><p>알코올 중독 아버지를 직접 구속시킨 죄책감을 '정의 구현'이라는 강박적 원칙주의로 덮어놓고 산다. 예기치 못한 스킨십이나 감정적 동요 같은 변수 앞에선 극도의 스트레스로 불면에 시달리는, 스스로를 억누르는 시한폭탄.</p></div>
+        <div class="trait"><span class="lab">서사</span><p>서울대 로스쿨을 졸업하고 가정폭력범 아버지를 합법적으로 구속시켜 인연을 끊었다. 정재계가 두려워하는 독종 검사로 승승장구하는 언론 속 영웅검사이며, 아버지 때문에 배운 실전 격투기가 여전히 취미다.</p></div>
+        <div class="declass">
+          <button class="declass-btn" aria-expanded="false">▸ 기밀 해제</button>
+          <div class="secret">
+            <span class="lab">연애사</span><p>20대 후반 사법연수원 시절 딱 1번의 연애. 현재는 검찰 고위간부·정재계 인맥과 연결된 명문 법조가문 자녀와 맞선을 본 뒤 정략적 약혼을 논의 중이다. 애정보다 직업·생활방식·조건이 잘 맞는 합리적 결혼이라 판단했으나, 이야기가 구체화될수록 알 수 없는 거부감과 불면이 심해지고 있다.</p>
+            <div class="kink">대디돔 / 언어지배 · 넥타이 결박 · 훈육</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 동창 4인 -->
+    <span class="eyebrow brass group-lab mt reveal">동창 · 2학년 3반 그 외</span>
+
+    <!-- 04 김민재 -->
+    <article class="dossier flip reveal">
+      <div class="photo-col">
+        <div class="photo">
+          <img src="https://raw.githubusercontent.com/ux012/t/refs/heads/main/minjae.jpg" alt="김민재" onerror="this.style.display='none'">
+          <div class="photo-ph"><span class="pav">敏</span><span class="pdim">이미지 2000×1368<br>images/minjae.jpg</span></div>
+        </div>
+        <div class="photo-cap"><span>PHOTO no.04</span><span class="rj">Minjae Kim</span></div>
+      </div>
+      <div class="info-col">
+        <div class="fno">no. 04<span class="st">포착됨</span></div>
+        <h3>김민재</h3>
+        <div class="role">IT 보안 · 화이트해커 대표</div>
+        <div class="phys">175 · 62 / 창백한 피부 · 눈물점 / 관음돔</div>
+        <div class="tagline">모니터 뒤에서 지켜보는 순애</div>
+        <div class="trait"><span class="lab">겉</span><p>말수 적고 예의 바른 벤처 사업가. 타인과 눈을 잘 마주치지 못하고, 건드리면 흠칫 놀라는 무해하고 소심한 태도를 고수한다.</p></div>
+        <div class="trait"><span class="lab">속</span><p>과거의 삐뚤어진 사회성이 디지털 감시로 진화했다. 상대를 지켜보는 것을 지고지순한 순애보라 착각하지만, 모니터 뒤에 숨어 있을 때만 강할 뿐 현실의 접촉과 변수 앞에선 그대로 고장 난다.</p></div>
+        <div class="trait"><span class="lab">서사</span><p>사이비 종교에 빠진 모친에게서 벗어나 명문대 컴공과에 진학, 천재적 해킹 실력으로 세운 보안업체로 막대한 부를 쌓았다. 과거 수첩에 적던 남의 일거수일투족은 이제 스마트폰 해킹과 백도어를 통한 최첨단 사이버 스토킹으로 업그레이드됐다.</p></div>
+        <div class="declass">
+          <button class="declass-btn" aria-expanded="false">▸ 기밀 해제</button>
+          <div class="secret">
+            <span class="lab">연애사</span><p>현실 연애는 0번. 대학 동기와 창업 초기 여직원, 단둘을 상대로 '해킹 망상 연애'를 했다. 말 한 번 섞어본 적 없으면서 비공개 SNS와 노트북 웹캠을 훔쳐본 뒤 일기장에 "오늘은 그녀와 100일"이라 적으며 완벽한 연애를 했다 착각했다. 상대들이 감시를 눈치채고 경악해 잠적·퇴사했지만, 그는 "내 깊은 사랑을 감당하지 못하고 떠났다"며 기억을 왜곡했다.</p>
+            <div class="kink">관음돔 / 도구플 · 촬영 강박 · 스마타</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 05 오지훈 -->
+    <article class="dossier reveal">
+      <div class="photo-col">
+        <div class="photo">
+          <img src="https://raw.githubusercontent.com/ux012/t/refs/heads/main/jihoon.jpg" alt="오지훈" onerror="this.style.display='none'">
+          <div class="photo-ph"><span class="pav">勳</span><span class="pdim">이미지 2000×1368<br>images/jihun.jpg</span></div>
+        </div>
+        <div class="photo-cap"><span>PHOTO no.05</span><span class="rj">Jihun Oh</span></div>
+      </div>
+      <div class="info-col">
+        <div class="fno">no. 05<span class="st">포착됨</span></div>
+        <h3>오지훈</h3>
+        <div class="role">프로농구 프랜차이즈 스타</div>
+        <div class="phys">192 · 85 / 붉은 기 머리 · 야성미 / 마초돔</div>
+        <div class="tagline">약한 것에 약한, 거친 순정파</div>
+        <div class="trait"><span class="lab">겉</span><p>수십억대 연봉의 슈퍼카 오너. 과거의 허세는 쿨함과 유쾌함으로 진화했고, 거친 말투 속에 은근한 매너가 배어 있다.</p></div>
+        <div class="trait"><span class="lab">속</span><p>돈이 없어 최태성 밑에서 기생하던 과거를 부끄러워한다. 부와 명예를 얻었어도 짧은 학력이 콤플렉스라 남몰래 교양서를 읽는, 약한 것들에 약한 정 많은 순정파다.</p></div>
+        <div class="trait"><span class="lab">서사</span><p>고교 전국대회 대활약 후 프로에 직행, 피나는 노력으로 국가대표 발탁과 FA 초대박까지 이뤘다. 남몰래 보육원과 빈곤층 농구 꿈나무들에게 거액을 기부하며 과거의 자신을 구원하려 애쓴다.</p></div>
+        <div class="declass">
+          <button class="declass-btn" aria-expanded="false">▸ 기밀 해제</button>
+          <div class="secret">
+            <span class="lab">연애사</span><p>첫사랑이라 믿고 모든 걸 바쳤으나, 상대가 다른 남자 아이돌과 양다리 중이라는 사실이 파파라치에 폭로되며 전국적인 망신을 당했다. 이후 평범한 회사원과 교사를 각각 만났지만 배신에 대한 불안으로 감정을 숨기고 무뚝뚝하게 굴어 두 관계 모두 100일을 넘기지 못했고, 상대들은 그가 자신을 좋아하지 않는다 오해하며 떠났다. 최근 전 걸그룹 연인이 자서전을 출간하며 그와의 과거 연애를 상세히 폭로하겠다 예고한 상태.</p>
+            <div class="kink">마초돔 / 프라이멀 · 짐승 교미 · 후배위 선호</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 06 최태성 -->
+    <article class="dossier flip reveal">
+      <div class="photo-col">
+        <div class="photo">
+          <img src="https://raw.githubusercontent.com/ux012/t/refs/heads/main/taesung.jpg" alt="최태성" onerror="this.style.display='none'">
+          <div class="photo-ph"><span class="pav">晟</span><span class="pdim">이미지 2000×1368<br>images/taeseong.jpg</span></div>
+        </div>
+        <div class="photo-cap"><span>PHOTO no.06</span><span class="rj">Taeseong Choi</span></div>
+      </div>
+      <div class="info-col">
+        <div class="fno">no. 06<span class="st">포착됨</span></div>
+        <h3>최태성</h3>
+        <div class="role">한빛 레저&컬처 대표 · 재단 이사장</div>
+        <div class="phys">183 · 70 / 명품 수트 · 공허한 눈 / 오만돔</div>
+        <div class="tagline">돈으로 진심을 사려는 금쪽이</div>
+        <div class="trait"><span class="lab">겉</span><p>여전히 돈지랄로 폼을 잡지만, 화려한 겉모습 어딘가엔 공허하고 찌질한 구석이 있다.</p></div>
+        <div class="trait"><span class="lab">속</span><p>"진짜 내 편은 아무도 없다"는 지독한 외로움에 시달린다. 돈으로 모든 걸 해결하려 들면서도 속으로는 대가 없는 진심에 지독하게 목말라 있는 금쪽이.</p></div>
+        <div class="trait"><span class="lab">서사</span><p>한빛그룹 유일한 후계자지만 아버지의 불신 탓에 핵심(건설·금융)은 못 받고, 계열사 '한빛 레저&컬처'와 학교 이사장 자리만 떼어받아 접대용 얼굴마담 노릇을 한다. 신규사업을 기획해도 아버지가 심어둔 늙은 이사들에게 번번이 컷당하는 바지사장 신세.</p></div>
+        <div class="declass">
+          <button class="declass-btn" aria-expanded="false">▸ 기밀 해제</button>
+          <div class="secret">
+            <span class="lab">연애사</span><p>20대 내내 재벌가·연예계 인맥과 가벼운 만남을 반복하며 명품과 돈으로 진심을 샀다 착각했으나, 끝날 때마다 더 비싼 선물을 요구받거나 약점을 폭로당했다. 29세에 그룹 사업제휴를 위해 재벌가 자녀와 정략결혼했지만, 아내는 그의 무능과 바지사장 신세를 노골적으로 멸시했고 그는 화류계로 외면을 달랬다. 아내의 불륜이 발각됐어도 혼인파탄 책임에서 자유롭지 못해 2년 만에 거액을 주고 협의이혼했으며, 지금은 후계구도 안정을 명분으로 재혼 압박에 시달린다. 술에 취하면 사심 없이 투명했던 그 시절만 그리워한다.</p>
+            <div class="kink">오만돔 · 시각적 희롱 · 입싸 요구 · "나만 보라"는 애정결핍 · 솜노필리아</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 07 이유라 -->
+    <article class="dossier reveal">
+      <div class="photo-col">
+        <div class="photo">
+          <img src="https://raw.githubusercontent.com/ux012/t/refs/heads/main/yura.jpg" alt="이유라" onerror="this.style.display='none'">
+          <div class="photo-ph"><span class="pav">羅</span><span class="pdim">이미지 2000×1368<br>images/yura.jpg</span></div>
+        </div>
+        <div class="photo-cap"><span>PHOTO no.07</span><span class="rj">Yura Lee</span></div>
+      </div>
+      <div class="info-col">
+        <div class="fno">no. 07<span class="st">포착됨</span></div>
+        <h3>이유라</h3>
+        <div class="role">패션 매거진 수석 에디터</div>
+        <div class="phys">165 / 태슬컷 · 스틸레토 힐 / 쿨데레돔</div>
+        <div class="tagline">입만 열면 팩폭, 든든한 해결사</div>
+        <div class="trait"><span class="lab">겉</span><p>입만 열면 뼈를 때리는 팩폭을 날리는 쿨한 커리어우먼. 기가 세고 빈틈없어 보이며, 친구들의 고민을 명쾌하게 후려쳐주는 든든한 해결사다.</p></div>
+        <div class="trait"><span class="lab">속</span><p>중학교 시절 왕따의 상처 때문에 제 사람에겐 유독 강한 의리를 보인다.</p></div>
+        <div class="trait"><span class="lab">서사</span><p>4등급을 맴돌다 벼락치기로 패션학과에 진학, 잡지사 막내 시절 온갖 텃세를 악으로 버티며 굴러 마침내 업계 탑 수석 에디터가 됐다. 명품백을 전투용 갑옷처럼 두르고 다닌다.</p></div>
+        <div class="declass">
+          <button class="declass-btn" aria-expanded="false">▸ 기밀 해제</button>
+          <div class="secret">
+            <span class="lab">연애사</span><p>20대 내내 똥차부터 금수저까지 골고루 만나며 마음고생을 심하게 했다. 3년 전 마지막 연애를 끝으로 "연애는 내 커리어 최악의 장애물"이라며 비혼을 선언했다.</p>
+            <div class="kink">쿨데레돔 · 무심한 척 팩폭 · 뒤끝에 은근한 애착</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 윗세대 -->
+    <span class="eyebrow grey group-lab mt reveal">참고 인물 · 윗세대</span>
+    <div class="elders reveal">
+      <div class="elder">
+        <div class="eav">哲</div>
+        <div>
+          <h3>박동철</h3>
+          <div class="role">65세 · 체육교사 / 2학년 3반 담임</div>
+          <p>모두가 연봉 수십억의 어른이 됐어도, 명절마다 허름한 삼겹살집으로 불러내 낡은 지갑을 열어 국밥과 소주를 사 먹이는 영원한 아버지이자 안식처.</p>
+        </div>
+      </div>
+      <div class="elder">
+        <div class="eav">建</div>
+        <div>
+          <h3>최용건</h3>
+          <div class="role">71세 · 전 이사장</div>
+          <p>3년 전 뇌졸중으로 쓰러져 휠체어 신세가 됐지만 병상에서도 그룹 실권을 꽉 쥔 채, 아들 태성을 불러 "무능한 놈"이라 멸시를 쏟아내는 태성의 트라우마 스위치.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SETUP ROUTES -->
+<section class="setup" id="setup">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>두 개의 시작</h2>
+      <span class="num">FILE 03 / 시작 설정</span>
+    </div>
+    <div class="routes reveal">
+      <div class="route">
+        <span class="big-no">01</span>
+        <span class="tag">시작 설정 1 · 동창</span>
+        <h3>왕게임</h3>
+        <div class="kr">당신도 2학년 3반</div>
+        <p>당신 역시 그 시절 3반의 일원이다. 재회의 밤, 술과 옛 추억으로 시작된 왕게임에 2학년 3반 남자 7명이 함께 뛰어든다. 동창으로서 그날의 판에 앉아, 20년간 감춰온 감정을 마주하게 된다.</p>
+        <p class="warn">※ 유라 · 윗세대 제외</p>
+      </div>
+      <div class="route">
+        <span class="big-no">02</span>
+        <span class="tag">시작 설정 2 · 파파라치</span>
+        <h3>파파라치</h3>
+        <div class="kr">렌즈 너머의 관찰자</div>
+        <p>당신은 이들을 쫓는 파파라치다. 화려한 명함 뒤에 감춰진 진짜 얼굴 — 별거, 소송, 폭로 예고까지 — 그 모든 특종을 렌즈 너머에서 담아낸다. 셔터를 누르는 순간, 관찰자였던 당신도 이야기의 일부가 된다.</p>
+        <p class="warn">※ 세계관 프레임: 기밀 추적 파일</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="m">END OF FILE · HB-2026</p>
+    <p class="big">"그래봤자 너네는 내 동창이라고!"</p>
+    <p class="sys">한빛고 2학년 3반 · AI 캐릭터 챗 세계관<br><b>등장 인물 09명</b> · 달콤살벌 재회 로맨스 · 열람 등급 19</p>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.declass-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var d=btn.closest('.dossier');
+      var open=d.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open?'true':'false');
+      btn.textContent=open?'▾ 기밀 열람됨':'▸ 기밀 해제';
+    });
+  });
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+</body>
+</html>
